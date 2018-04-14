@@ -12,6 +12,8 @@ import android.widget.Toast;
 import com.example.android.inventoryapp.data.DbHelper;
 import com.example.android.inventoryapp.data.ProductContract;
 
+import static com.example.android.inventoryapp.data.ProductContract.ProductEntry.CONTENT_URI;
+
 public class ProductProvider extends ContentProvider {
     public static final String LOG_TAG = ProductProvider.class.getSimpleName();
     private static final int PRODUCTS = 100;
@@ -181,7 +183,6 @@ public class ProductProvider extends ContentProvider {
     }
 
     static public Uri getContentUri(int productId) {
-      Uri uri = new Uri.Builder().scheme("content://").authority(ProductContract.CONTENT_AUTHORITY).path(ProductContract.PATH_PRODUCTS).build();
-        return ContentUris.withAppendedId(uri, productId);
+        return ContentUris.withAppendedId(CONTENT_URI, productId);
     }
 }

@@ -3,6 +3,7 @@ package com.example.android.inventoryapp;
 import android.app.LoaderManager;
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.CursorLoader;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.Loader;
@@ -160,9 +161,9 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
                 ProductContract.ProductEntry._ID,
                 ProductContract.ProductEntry.COLUMN_PRODUCT_NAME,
                 ProductContract.ProductEntry.COLUMN_PRICE,
-                ProductContract.ProductEntry.COLUMN_QUANTITY_AVAILABLE,};
+                ProductContract.ProductEntry.COLUMN_QUANTITY_AVAILABLE};
 
-        return new android.content.CursorLoader(this, currentUri, projection, null, null, null);
+        return new CursorLoader(this, currentUri, projection, null, null, null);
     }
 
     @Override

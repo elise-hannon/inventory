@@ -52,7 +52,7 @@ public class InventoryListActivity extends AppCompatActivity implements LoaderMa
         values.put(ProductContract.ProductEntry.COLUMN_PRICE, "$9.99");
         values.put(ProductContract.ProductEntry.COLUMN_QUANTITY_AVAILABLE, "7");
 
-        Uri newUri = getContentResolver().insert(ProductContract.ProductEntry.CONTENT_URI, values);
+        getContentResolver().insert(ProductContract.ProductEntry.CONTENT_URI, values);
     }
 
     @Override

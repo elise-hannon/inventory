@@ -29,7 +29,7 @@ public class CursorAdapter extends android.widget.CursorAdapter {
         TextView quantityTextView = view.findViewById(R.id.quantity);
         Button saleButton = view.findViewById(R.id.sale_button);
 
-        final int productId = cursor.getColumnIndex(ProductContract.ProductEntry._ID);
+        int productIdIndex = cursor.getColumnIndex(ProductContract.ProductEntry._ID);
         int nameColumnIndex = cursor.getColumnIndex(ProductContract.ProductEntry.COLUMN_PRODUCT_NAME);
         int priceColumnIndex = cursor.getColumnIndex(ProductContract.ProductEntry.COLUMN_PRICE);
         int quantityColumnIndex = cursor.getColumnIndex(ProductContract.ProductEntry.COLUMN_QUANTITY_AVAILABLE);
@@ -37,6 +37,7 @@ public class CursorAdapter extends android.widget.CursorAdapter {
         String productName = cursor.getString(nameColumnIndex);
         int price = cursor.getInt(priceColumnIndex);
         int quanitity = cursor.getInt(quantityColumnIndex);
+        final int productId = cursor.getInt(productIdIndex);
 
         nameTextView.setText(productName);
         priceTextView.setText(String.valueOf(price));
