@@ -179,4 +179,9 @@ public class ProductProvider extends ContentProvider {
                 throw new IllegalStateException("Unknown URI " + uri + " with match " + match);
         }
     }
+
+    static public Uri getContentUri(int productId) {
+      Uri uri = new Uri.Builder().scheme("content://").authority(ProductContract.CONTENT_AUTHORITY).path(ProductContract.PATH_PRODUCTS).build();
+        return ContentUris.withAppendedId(uri, productId);
+    }
 }

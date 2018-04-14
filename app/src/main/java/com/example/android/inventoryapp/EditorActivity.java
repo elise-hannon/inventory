@@ -2,7 +2,9 @@ package com.example.android.inventoryapp;
 
 import android.app.LoaderManager;
 import android.content.ContentValues;
+import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.Loader;
 import android.database.Cursor;
 import android.net.Uri;
@@ -31,6 +33,12 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
 
     private boolean productHasChanged = false;
     private int quantityModifier;
+
+   static public Intent getStartIntent(Context context, Uri contentUri){
+        Intent intent = new Intent(context, EditorActivity.class);
+        intent.setData(contentUri);
+        return intent;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

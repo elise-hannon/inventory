@@ -35,6 +35,16 @@
                 android:hint="@string/hint_product_price"
                 android:inputType="textCapWords"
                 style="@style/EditorFieldStyle"/>
+
+            <TextView
+                android:text="@string/category_quantity_overview"
+                style="@style/CategoryStyle"/>
+
+            <EditText
+                android:id="@+id/current_quantity"
+                android:hint="@string/hint_product_quantity"
+                android:inputType="number"
+                style="@style/EditorFieldStyle"/>
         </LinearLayout>
     </LinearLayout>
 
@@ -43,16 +53,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
-
-        <TextView
-            android:text="@string/category_quantity_overview"
-            style="@style/CategoryStyle"/>
-
-        <EditText
-            android:id="@+id/current_quantity"
-            android:hint="@string/hint_product_quantity"
-            android:inputType="number"
-            style="@style/EditorFieldStyle"/>
 
         <RelativeLayout
             android:layout_height="wrap_content"

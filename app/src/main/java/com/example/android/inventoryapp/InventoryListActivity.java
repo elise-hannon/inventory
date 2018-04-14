@@ -15,6 +15,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ListView;
 import com.example.android.inventoryapp.data.ProductContract;
 
@@ -78,6 +79,7 @@ public class InventoryListActivity extends AppCompatActivity implements LoaderMa
     public Loader<Cursor> onCreateLoader(int i, Bundle bundle) {
         String[] projection = {
                 ProductContract.ProductEntry._ID,
+                ProductContract.ProductEntry.COLUMN_PRODUCT_NAME,
                 ProductContract.ProductEntry.COLUMN_PRICE,
                 ProductContract.ProductEntry.COLUMN_QUANTITY_AVAILABLE
         };
