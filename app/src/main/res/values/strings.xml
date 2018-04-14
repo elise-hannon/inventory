@@ -1,0 +1,52 @@
+<resources>
+    <string name="app_name">Inventory App</string>
+
+    <string name="null_product_name_toast">Please include a product name before saving</string>
+    <string name="null_product_image_toast">Please include a product image before saving</string>
+    <string name="null_product_price_toast">Please include a product price before saving</string>
+    <string name="null_product_quantity_toast">Please include a product quantity before saving</string>
+    <string name="null_product_supplier_toast">Please include a product supplier before saving</string>
+
+    <string name="empty_view_title_text">It\'s a bit lonely here...</string>
+    <string name="empty_view_subtitle_text">Get started by clicking the button in the bottom right to add a product to
+        your inventory
+    </string>
+    <string name="listview_title">Inventory Overview</string>
+    <string name="category_product_overview">Product Overview</string>
+    <string name="category_quantity_overview">Available Quantity</string>
+
+    <string name="hint_product_name">Product Name</string>
+    <string name="hint_product_price">Price</string>
+    <string name="hint_product_quantity">Quantity</string>
+    <string name="hint_modification_number">Number</string>
+
+    <string name="increment_button">+</string>
+    <string name="decrement_button">-</string>
+    <string name="sale_button">Sale</string>
+    <string name="order_from_supplier">Order more</string>
+
+    <string name="modify_quantity_section">Modify Quantity by:</string>
+
+    <string name="editor_activity_title_new_product">Add a Product</string>
+    <string name="editor_activity_title_edit_product">Edit Product</string>
+
+    <string name="action_save">Save</string>
+    <string name="action_delete">Delete</string>
+    <string name="delete_dialog_msg">Delete this product?</string>
+    <string name="delete">Delete</string>
+    <string name="cancel">Cancel</string>
+
+    <string name="editor_insert_product_failed">Error with saving product</string>
+    <string name="editor_insert_product_successful">Product saved</string>
+    <string name="editor_update_product_failed">Error with saving product</string>
+    <string name="editor_update_product_successful">Product saved</string>
+    <string name="editor_delete_product_failed">Error with deleting product</string>
+    <string name="editor_delete_product_successful">Product deleted</string>
+
+    <string name="action_insert_dummy_data">Insert Dummy Data</string>
+    <string name="action_delete_all_entries">Delete All Products</string>
+
+    <string name="unsaved_changes_dialog_msg">Discard your changes and quit editing?</string>
+    <string name="discard">Discard</string>
+    <string name="keep_editing">Keep Editing</string>
+</resources>
