@@ -8,92 +8,98 @@
     android:padding="@dimen/activity_margin"
     tools:context=".EditorActivity">
 
+    <ImageButton
+        android:id="@+id/image_button"
+        android:layout_width="144dp"
+        android:layout_height="144dp"
+        android:background="#C5CAE9"
+        android:scaleType="centerInside"/>
+
+    <TextView
+        android:layout_width="144dp"
+        android:layout_height="wrap_content"
+        android:text="@string/image_button"
+        android:layout_marginTop="8dp"/>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
         <TextView
-            android:text="@string/category_product_overview"
+            android:text="@string/hint_product_name"
             style="@style/CategoryStyle"/>
 
-        <LinearLayout
-            android:layout_height="wrap_content"
-            android:layout_width="0dp"
-            android:layout_weight="2"
-            android:paddingLeft="4dp"
-            android:orientation="vertical">
-
-            <EditText
-                android:id="@+id/edit_product_name"
-                android:hint="@string/hint_product_name"
-                android:inputType="textCapWords"
-                style="@style/EditorFieldStyle"/>
-
-            <EditText
-                android:id="@+id/edit_product_price"
-                android:hint="@string/hint_product_price"
-                android:inputType="textCapWords"
-                style="@style/EditorFieldStyle"/>
-
-            <TextView
-                android:text="@string/category_quantity_overview"
-                style="@style/CategoryStyle"/>
-
-            <EditText
-                android:id="@+id/current_quantity"
-                android:hint="@string/hint_product_quantity"
-                android:inputType="number"
-                style="@style/EditorFieldStyle"/>
-        </LinearLayout>
+        <EditText
+            android:id="@+id/edit_product_name"
+            android:hint="@string/hint_product_name"
+            android:inputType="textCapWords"
+            style="@style/EditorFieldStyle"/>
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/container_measurement"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <RelativeLayout
-            android:layout_height="wrap_content"
-            android:layout_width="0dp"
-            android:layout_weight="2"
-            android:paddingLeft="4dp">
+        <TextView
+            android:text="@string/product_price"
+            style="@style/CategoryStyle"/>
 
-            <TextView
-                android:id="@+id/modify_quantity"
-                android:text="@string/modify_quantity_section"
-                style="@style/EditorFieldStyle"/>
+        <EditText
+            android:id="@+id/edit_product_price"
+            android:hint="@string/hint_product_price"
+            android:inputType="textCapWords"
+            style="@style/EditorFieldStyle"/>
+    </LinearLayout>
 
-            <EditText
-                android:id="@+id/quantity_modification_number"
-                android:hint="@string/hint_modification_number"
-                android:inputType="number"
-                android:layout_toRightOf="@+id/modify_quantity"
-                style="@style/EditorFieldStyle"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
 
-            <Button
-                android:id="@+id/increment_button"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:layout_marginLeft="8dp"
-                android:layout_toRightOf="@+id/quantity_modification_number"
-                android:text="@string/increment_button"/>
+        <TextView
+            android:text="@string/product_quantity"
+            style="@style/CategoryStyle"/>
 
-            <Button
-                android:id="@+id/decrement_button"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:layout_marginLeft="8dp"
-                android:layout_toRightOf="@id/increment_button"
-                android:text="@string/decrement_button"/>
-        </RelativeLayout>
+        <EditText
+            android:id="@+id/current_quantity"
+            android:hint="@string/hint_product_quantity"
+            android:inputType="number"
+            style="@style/EditorFieldStyle"/>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/modify_quantity"
+            android:text="@string/modify_quantity_section"
+            android:maxLines="1"
+            style="@style/CategoryStyle"/>
 
         <Button
-            android:id="@+id/order_from_supplier_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/order_from_supplier"/>
+            android:id="@+id/increment_button"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:text="@string/increment_button"/>
+
+        <Button
+            android:id="@+id/decrement_button"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginLeft="4dp"
+            android:text="@string/decrement_button"/>
     </LinearLayout>
+
+    <Button
+        android:id="@+id/order_from_supplier_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="@string/order_from_supplier"/>
 </LinearLayout>
 
