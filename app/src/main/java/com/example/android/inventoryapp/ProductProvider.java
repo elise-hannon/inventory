@@ -85,8 +85,8 @@ public class ProductProvider extends ContentProvider {
             Toast needQuantityToast = Toast.makeText(getContext(), R.string.null_product_quantity_toast, Toast.LENGTH_SHORT);
             needQuantityToast.show();
         }
-        byte[] photo = values.getAsByteArray(ProductContract.ProductEntry.COLUMN_IMAGE);
-        if (photo == null) {
+        String imageFileName = values.getAsString(ProductContract.ProductEntry.COLUMN_IMAGE);
+        if (imageFileName == null) {
             Toast needNameToast = Toast.makeText(getContext(), R.string.null_product_image_toast, Toast.LENGTH_SHORT);
             needNameToast.show();
         }

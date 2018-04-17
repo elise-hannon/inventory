@@ -14,6 +14,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.AlertDialog;
@@ -31,6 +32,7 @@ import com.example.android.inventoryapp.data.ProductContract;
 
 import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 
 public class EditorActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
@@ -46,7 +48,7 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
     private Uri currentUri;
     private boolean productHasChanged = false;
     private Bitmap bitmap;
-    private byte[] photo;
+    private String imageFileName;
 
     static public Intent getStartIntent(Context context, Uri contentUri) {
         Intent intent = new Intent(context, EditorActivity.class);
@@ -142,7 +144,7 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
         String price = priceEditText.getText().toString().trim();
         String quantity = quantityEditText.getText().toString().trim();
 
-        if (!isValidData(name, price, quantity, photo)) {
+        if (!isValidData(name, price, quantity, imageFileName)) {
             return false;
         }
 
@@ -157,7 +159,7 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
         values.put(ProductContract.ProductEntry.COLUMN_PRICE, priceInt);
         quantityInt = Integer.parseInt(quantity);
         values.put(ProductContract.ProductEntry.COLUMN_QUANTITY_AVAILABLE, quantityInt);
-        values.put(ProductContract.ProductEntry.COLUMN_IMAGE, photo);
+        values.put(ProductContract.ProductEntry.COLUMN_IMAGE, imageFileName);
 
         if (currentUri == null) {
 
@@ -254,12 +256,15 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
             name = data.getString(nameColumnIndex);
             priceInt = data.getInt(priceColumnIndex);
             quantityInt = data.getInt(quantityColumnIndex);
-            photo = data.getBlob(imageColumnIndex);
+            imageFileName = data.getString(imageColumnIndex);
+
+            BitmapFactory.Options options = new BitmapFactory.Options();
+            options.inPreferredConfig = Bitmap.Config.ARGB_8888;
+            Bitmap bitmap = BitmapFactory.decodeFile(imageFileName, options);
 
             nameEditText.setText(name);
             priceEditText.setText(Integer.toString(priceInt));
             quantityEditText.setText(Integer.toString(quantityInt));
-            bitmap = BitmapFactory.decodeByteArray(photo, 0, photo.length);
             imageButton.setImageBitmap(bitmap);
         }
     }
@@ -352,22 +357,32 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
 
         if (requestCode == GET_FROM_GALLERY && resultCode == Activity.RESULT_OK) {
             Uri selectedImage = data.getData();
+            FileOutputStream fileOutputStream = null;
+            String[] tokens = selectedImage.toString().split("/");
+            imageFileName = getExternalFilesDir(Environment.DIRECTORY_PICTURES) + "/" + tokens[tokens.length - 1] + ".png";
             try {
                 bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), selectedImage);
                 imageButton.setImageBitmap(bitmap);
-                ByteArrayOutputStream baos = new ByteArrayOutputStream();
-                bitmap.compress(Bitmap.CompressFormat.PNG, 100, baos);
-                photo = baos.toByteArray();
+                fileOutputStream = new FileOutputStream(imageFileName);
+                bitmap.compress(Bitmap.CompressFormat.PNG, 100, fileOutputStream);
 
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             } catch (IOException e) {
                 e.printStackTrace();
+            } finally {
+                try {
+                    if (fileOutputStream != null) {
+                        fileOutputStream.close();
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         }
     }
 
-    private boolean isValidData(String name, String price, String quantity, byte[] photos) {
+    private boolean isValidData(String name, String price, String quantity, String imageFileName) {
         if (name == null || TextUtils.isEmpty(name)) {
             Toast needNameToast = Toast.makeText(this, R.string.null_product_name_toast, Toast.LENGTH_SHORT);
             needNameToast.show();
@@ -383,7 +398,7 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
             needQuantityToast.show();
             return false;
         }
-        if (photos == null || photos.length == 0) {
+        if (imageFileName == null || TextUtils.isEmpty(imageFileName)) {
             Toast needNameToast = Toast.makeText(this, R.string.null_product_image_toast, Toast.LENGTH_SHORT);
             needNameToast.show();
             return false;
