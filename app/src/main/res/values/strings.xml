@@ -6,6 +6,7 @@
     <string name="null_product_price_toast">Please include a product price before saving</string>
     <string name="null_product_quantity_toast">Please include a product quantity before saving</string>
     <string name="null_product_supplier_toast">Please include a product supplier before saving</string>
+    <string name="quantity_at_zero">Product out of stock. Click on listing to delete product or order more</string>
 
     <string name="empty_view_title_text">It\'s a bit lonely here...</string>
     <string name="empty_view_subtitle_text">Get started by clicking the button in the bottom right to add a product to
