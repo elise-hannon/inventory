@@ -1,21 +1,16 @@
 package com.example.android.inventoryapp;
 
 import android.app.LoaderManager;
-import android.content.ContentValues;
 import android.content.CursorLoader;
 import android.content.Intent;
 import android.content.Loader;
 import android.database.Cursor;
-import android.net.Uri;
-import android.os.Build;
-import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.support.design.widget.FloatingActionButton;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ListView;
 import com.example.android.inventoryapp.data.ProductContract;
 
@@ -46,14 +41,6 @@ public class InventoryListActivity extends AppCompatActivity implements LoaderMa
             }
         });
     }
-    private void insertProduct() {
-        ContentValues values = new ContentValues();
-        values.put(ProductContract.ProductEntry.COLUMN_PRODUCT_NAME, "Test Product");
-        values.put(ProductContract.ProductEntry.COLUMN_PRICE, "$9.99");
-        values.put(ProductContract.ProductEntry.COLUMN_QUANTITY_AVAILABLE, "7");
-
-        getContentResolver().insert(ProductContract.ProductEntry.CONTENT_URI, values);
-    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -65,9 +52,6 @@ public class InventoryListActivity extends AppCompatActivity implements LoaderMa
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.action_insert_dummy_data:
-                insertProduct();
-                return true;
             case R.id.action_delete_all_entries:
                 deleteAllProducts();
                 return true;

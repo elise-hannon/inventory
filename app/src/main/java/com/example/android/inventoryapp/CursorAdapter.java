@@ -69,7 +69,7 @@ public class CursorAdapter extends android.widget.CursorAdapter {
                             null, null);
                     quantityTextView.setText(String.valueOf(newQuantity));
                 } else {
-                    Toast toast = Toast.makeText(v.getContext(), R.string.quantity_less_than_zero, Toast.LENGTH_SHORT);
+                    Toast toast = Toast.makeText(v.getContext(), R.string.quantity_at_zero, Toast.LENGTH_SHORT);
                     toast.show();
                 }
             }

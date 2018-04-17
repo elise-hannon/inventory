@@ -74,26 +74,21 @@ public class ProductProvider extends ContentProvider {
         if (name == null) {
             Toast needNameToast = Toast.makeText(getContext(), R.string.null_product_name_toast, Toast.LENGTH_SHORT);
             needNameToast.show();
-            throw new IllegalArgumentException("Product requires a name");
         }
         Integer price = values.getAsInteger(ProductContract.ProductEntry.COLUMN_PRICE);
         if (price == null || price <= 0) {
             Toast needPriceToast = Toast.makeText(getContext(), R.string.null_product_price_toast, Toast.LENGTH_SHORT);
             needPriceToast.show();
-            throw new IllegalArgumentException("Product requires valid price");
         }
-
         Integer quantity = values.getAsInteger(ProductContract.ProductEntry.COLUMN_QUANTITY_AVAILABLE);
-        if (quantity == null || quantity <= 0) {
+        if (quantity == null || quantity <0) {
             Toast needQuantityToast = Toast.makeText(getContext(), R.string.null_product_quantity_toast, Toast.LENGTH_SHORT);
             needQuantityToast.show();
-            throw new IllegalArgumentException("Product requires valid quantity");
         }
         String imageUri = values.getAsString(ProductContract.ProductEntry.COLUMN_IMAGE);
         if (imageUri == null) {
             Toast needNameToast = Toast.makeText(getContext(), R.string.null_product_image_toast, Toast.LENGTH_SHORT);
             needNameToast.show();
-            throw new IllegalArgumentException("Product requires an image");
         }
 
         long id = database.insert(ProductContract.ProductEntry.TABLE_NAME, null, values);
@@ -129,7 +124,6 @@ public class ProductProvider extends ContentProvider {
             if (name == null) {
                 Toast needNameToast = Toast.makeText(getContext(), R.string.null_product_name_toast, Toast.LENGTH_SHORT);
                 needNameToast.show();
-                throw new IllegalArgumentException("Product requires a name");
             }
         }
         if (values.containsKey(ProductContract.ProductEntry.COLUMN_PRICE)) {
@@ -137,15 +131,16 @@ public class ProductProvider extends ContentProvider {
             if (price == null || price <= 0) {
                 Toast needPriceToast = Toast.makeText(getContext(), R.string.null_product_price_toast, Toast.LENGTH_SHORT);
                 needPriceToast.show();
-                throw new IllegalArgumentException("Product requires valid price");
             }
         }
         if (values.containsKey(ProductContract.ProductEntry.COLUMN_QUANTITY_AVAILABLE)) {
             Integer quantity = values.getAsInteger(ProductContract.ProductEntry.COLUMN_QUANTITY_AVAILABLE);
-            if (quantity == null || quantity <= 0) {
+            if (quantity == null) {
                 Toast needQuantityToast = Toast.makeText(getContext(), R.string.null_product_quantity_toast, Toast.LENGTH_SHORT);
                 needQuantityToast.show();
-                throw new IllegalArgumentException("Product requires valid quantity");
+            } else if (quantity <= 0) {
+                Toast needQuantityToast = Toast.makeText(getContext(), R.string.quantity_at_zero, Toast.LENGTH_SHORT);
+                needQuantityToast.show();
             }
         }
         if (values.containsKey(ProductContract.ProductEntry.COLUMN_IMAGE)) {
@@ -153,7 +148,6 @@ public class ProductProvider extends ContentProvider {
             if (imageUri == null) {
                 Toast needNameToast = Toast.makeText(getContext(), R.string.null_product_image_toast, Toast.LENGTH_SHORT);
                 needNameToast.show();
-                throw new IllegalArgumentException("Product requires an image");
             }
         }
         if (values.size() == 0) {
