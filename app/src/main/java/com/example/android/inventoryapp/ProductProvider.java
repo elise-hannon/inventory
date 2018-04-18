@@ -144,8 +144,8 @@ public class ProductProvider extends ContentProvider {
             }
         }
         if (values.containsKey(ProductContract.ProductEntry.COLUMN_IMAGE)) {
-            byte[] photo = values.getAsByteArray(ProductContract.ProductEntry.COLUMN_IMAGE);
-            if (photo == null) {
+            String imageFileName = values.getAsString(ProductContract.ProductEntry.COLUMN_IMAGE);
+            if (imageFileName == null) {
                 Toast needNameToast = Toast.makeText(getContext(), R.string.null_product_image_toast, Toast.LENGTH_SHORT);
                 needNameToast.show();
             }
