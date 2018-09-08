@@ -17,7 +17,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:layout_margin="@dimen/fab_margin"/>
+        android:layout_margin="@dimen/fab_margin"
+        android:src="@drawable/plus_sign_512"/>
 
     <LinearLayout
         android:id="@+id/empty_view"

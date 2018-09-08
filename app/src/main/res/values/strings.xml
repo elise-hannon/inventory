@@ -6,6 +6,7 @@
     <string name="null_product_price_toast">Please include a product price before saving</string>
     <string name="null_product_quantity_toast">Please include a product quantity before saving</string>
     <string name="null_product_supplier_toast">Please include a product supplier before saving</string>
+    <string name="quantity_at_zero">Product out of stock. Click on listing to delete product or order more</string>
 
     <string name="empty_view_title_text">It\'s a bit lonely here...</string>
     <string name="empty_view_subtitle_text">Get started by clicking the button in the bottom right to add a product to
@@ -15,6 +16,9 @@
     <string name="category_product_overview">Product Overview</string>
     <string name="category_quantity_overview">Available Quantity</string>
 
+    <string name="product_name">Name: </string>
+    <string name="product_price">Price: </string>
+    <string name="product_quantity">Quantity: </string>
     <string name="hint_product_name">Product Name</string>
     <string name="hint_product_price">Price</string>
     <string name="hint_product_quantity">Quantity</string>
@@ -25,7 +29,8 @@
     <string name="sale_button">Sale</string>
     <string name="order_from_supplier">Order more</string>
 
-    <string name="modify_quantity_section">Modify Quantity by:</string>
+    <string name="modify_quantity_section">Modify Quantity:</string>
+    <string name="toast_less_than_one">Quantity cannot be less than 1</string>
 
     <string name="editor_activity_title_new_product">Add a Product</string>
     <string name="editor_activity_title_edit_product">Edit Product</string>
@@ -49,4 +54,12 @@
     <string name="unsaved_changes_dialog_msg">Discard your changes and quit editing?</string>
     <string name="discard">Discard</string>
     <string name="keep_editing">Keep Editing</string>
+
+    <string name="price_text">Price: $</string>
+    <string name="quantity_text">Quantity Available:  </string>
+
+    <string name="email_subject_line">Supply Order</string>
+    <string name="order_message_template">Hello, \n \n I would like to reorder a supply of %1$s. \n \n Thank you.</string>
+    <string name="quantity_less_than_zero">Quantity cannot be less than 0</string>
+    <string name="image_button">Click to add product image</string>
 </resources>

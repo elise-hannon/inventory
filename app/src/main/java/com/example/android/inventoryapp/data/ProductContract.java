@@ -18,6 +18,7 @@ public class ProductContract {
         public static final String COLUMN_PRODUCT_NAME = "name";
         public static final String COLUMN_PRICE = "price";
         public static final String COLUMN_QUANTITY_AVAILABLE = "quantity";
+        public static final String COLUMN_IMAGE = "image";
 
         public static final String CONTENT_LIST_TYPE =
                 ContentResolver.CURSOR_DIR_BASE_TYPE + "/" + CONTENT_AUTHORITY + "/" + PATH_PRODUCTS;
